@@ -7,14 +7,24 @@ Actor Model Class
  */
 public class Actor {
 
-    @Value("${actor.name}")
+    //@Value("${actor.name}")
     private String name;
 
-    @Value("${actor.gender}")
+    //@Value("${actor.gender}")
     private String gender;
 
-    @Value("${actor.age}")
+    //@Value("${actor.age}")
     private int age;
+
+    public Actor() {
+
+    }
+
+    public Actor(String name, String gender, int age) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+    }
 
     public String getName() {
         return name;

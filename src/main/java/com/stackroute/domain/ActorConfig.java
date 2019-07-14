@@ -3,14 +3,17 @@ package com.stackroute.domain;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.Scope;
+
+import java.util.ArrayList;
 
 @Configuration
-@PropertySource("file:src/actorInformation.properties")
 public class ActorConfig {
 
-    @Bean
+    @Bean(value = "Movie A, Movie B", initMethod = "initMethod")
+    @Scope(scopeName = "prototype")
     public Movie movie() {
-        return new Movie();
+        return new Movie(new ArrayList<Actor>());
     }
 
     @Bean

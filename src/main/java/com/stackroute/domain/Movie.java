@@ -5,41 +5,36 @@ Displays actor information for respective movies.
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.jmx.export.annotation.ManagedResource;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
 
 public class Movie {
 
     @Autowired
-    private List<Actor> actor;
+    private Actor actor;
 
-    public Movie(List<Actor> actor) {
-        this.actor = actor;
+    public Movie() {
+
     }
 
-    public List<Actor> getActor() {
+    @Autowired
+    public Movie(Actor actor) {
+        this.actor = actor;
+        System.out.println("Constructor Called");
+    }
+
+    public Actor getActor() {
         return actor;
     }
 
-    public void setActor(List<Actor> actor) {
+    public void setActor(Actor actor) {
         this.actor = actor;
+        System.out.println("Setter Method Called");
     }
 
     public void displayInformation() {
-        for(Actor actor: actor) {
-            actor.display();
-        }
+        actor.display();
     }
 
     public void initMethod() {
-        actor = Arrays.asList(new Actor("ABC", "Female", 12), new Actor("PQR", "Female", 20), new Actor("XYZ", "Female", 25));
+        actor = new Actor("ABC", "Female", 12);
     }
 }

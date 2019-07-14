@@ -17,6 +17,11 @@ public class ActorConfig {
         return new Movie(new Actor());
     }
 
+    @Bean(value = {"beanLifeCycle"}, initMethod = "customInit", destroyMethod = "customDestroy")
+    public BeanLifeCycleDemoBean beanLifeCycleDemo() {
+        return new BeanLifeCycleDemoBean();
+    }
+
     @Bean
     public Actor getActor() {
         return new Actor();
